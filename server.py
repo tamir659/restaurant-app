@@ -10,7 +10,6 @@ app.config['SECRET_KEY'] = 'change-me'
 
 db.init_app(app) 
 
-
 with app.app_context():
     db.create_all()
 
