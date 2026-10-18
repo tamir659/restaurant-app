@@ -1,11 +1,11 @@
-FROM python:3.10-slim 
+FROM python:3.12-slim
 
-WORKDIR /restaurant-app 
+WORKDIR /restaurant-app
 
-RUN pip install Flask flask_wtf wtforms wtforms.validators flask_sqlalchemy datetime email_validator psycopg2-binary 
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . . 
+COPY . .
 
-CMD python server.py  
-
- 
+EXPOSE 5000
+CMD ["flask", "--app", "server", "run", "--host", "0.0.0.0"]
